@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CallToSantaClaus</string>
+    <string name="santa_claus">Santa Claus</string>
+    <string name="message">Message</string>
+    <string name="remind_me">Remind me</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
+</resources>

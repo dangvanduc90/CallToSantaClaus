@@ -36,11 +36,8 @@ public class CallingActivity extends AppCompatActivity implements SurfaceHolder.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calling);
 
-        videoView = (VideoView) findViewById(R.id.videoView);
-        circleMute = (CircleImageView) findViewById(R.id.circleMute);
-        circleEnd = (CircleImageView) findViewById(R.id.circleEnd);
-        circleVideo = (CircleImageView) findViewById(R.id.circleVideo);
-        camView = (SurfaceView) findViewById(R.id.camerapreview);
+        initView();
+        camView.setZOrderOnTop(true);
 
         String videoString = "android.resource://"+getApplicationContext().getPackageName()+"/raw/v4618";
         videoView.setVideoURI(Uri.parse(videoString));
@@ -75,8 +72,18 @@ public class CallingActivity extends AppCompatActivity implements SurfaceHolder.
         getWindow().setFormat(PixelFormat.UNKNOWN);
         surfaceHolder = camView.getHolder();
         surfaceHolder.addCallback(this);
+        surfaceHolder.setFormat(PixelFormat.OPAQUE);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
     }
+
+    private void initView() {
+        videoView = (VideoView) findViewById(R.id.videoView);
+        circleMute = (CircleImageView) findViewById(R.id.circleMute);
+        circleEnd = (CircleImageView) findViewById(R.id.circleEnd);
+        circleVideo = (CircleImageView) findViewById(R.id.circleVideo);
+        camView = (SurfaceView) findViewById(R.id.camerapreview);
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
